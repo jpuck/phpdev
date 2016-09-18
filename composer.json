@@ -8,5 +8,10 @@
 			"email": "jeff@jeffpuckett.com"
 		}
 	],
-	"require": {}
+	"require": {},
+	"autoload": {
+		"psr-4": {
+			"jpuck\\phpdev\\": "src/"
+		}
+	}
 }
