@@ -1,5 +1,5 @@
 <?php
-namespace jpuck\phpdev;
+namespace jpuck\phpdev\Exceptions;
 
 use Exception;
 
