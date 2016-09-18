@@ -1,0 +1,12 @@
+{
+	"name": "jpuck/phpdev",
+	"description": "A collection of classes useful for code under construction.",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Jeff Puckett",
+			"email": "jeff@jeffpuckett.com"
+		}
+	],
+	"require": {}
+}
