@@ -2,7 +2,82 @@
 
 A collection of classes useful for code under construction.
 
-## Unimplemented Exception
+## Functions
+
+### `mixed print_r_tabs ( mixed $expression [, bool $return = false ] )`
+
+Tabulator wrapper for [`print_r`][1] replaces 8 spaces with a tab.
+
+```php
+use jpuck\phpdev\Functions as jp;
+
+$array = [
+	'first' =>
+	[
+		'second' =>
+		[
+			'third' =>
+			[
+				'forth' =>
+				[
+					'fifth' => 5
+				]
+			]
+		]
+	]
+];
+
+print_r($array);
+
+jp::print_r_tabs($array);
+```
+
+Example displayed on console with tabs set to 4 spaces:
+
+>     Array
+>     (
+>         [first] => Array
+>             (
+>                 [second] => Array
+>                     (
+>                         [third] => Array
+>                             (
+>                                 [forth] => Array
+>                                     (
+>                                         [fifth] => 5
+>                                     )
+>
+>                             )
+>
+>                     )
+>
+>             )
+>
+>     )
+>     Array
+>     (
+>         [first] => Array
+>         (
+>             [second] => Array
+>             (
+>                 [third] => Array
+>                 (
+>                     [forth] => Array
+>                     (
+>                         [fifth] => 5
+>                     )
+>
+>                 )
+>
+>             )
+>
+>         )
+>
+>     )
+
+## Exceptions
+
+### `Unimplemented` Method
 
 ```php
 use jpuck\phpdev\Exceptions\Unimplemented;
@@ -25,3 +100,5 @@ class MyClass {
 	}
 }
 ```
+
+  [1]:http://php.net/manual/en/function.print-r.php
