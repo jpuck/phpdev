@@ -4,7 +4,7 @@ A collection of classes useful for code under construction.
 
 ## Functions
 
-### `mixed print_r_tabs ( mixed $expression [, bool $return = false ] )`
+### `mixed print_rt ( mixed $expression [, bool $return = false ] )`
 
 Tabulator wrapper for [`print_r`][1] replaces 8 spaces with a tab.
 
@@ -29,7 +29,7 @@ $array = [
 
 print_r($array);
 
-jp::print_r_tabs($array);
+jp::print_rt($array);
 ```
 
 Example displayed on console with tabs set to 4 spaces:
