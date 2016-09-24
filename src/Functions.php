@@ -17,4 +17,27 @@ class Functions {
 		}
 		echo $tabulated;
 	}
+
+	public static function arr_export(Array $array, Bool $return = false){
+		$result = var_export($array, true);
+
+		// replace 2-space indentations with a tab
+		// http://stackoverflow.com/a/39682092/4233593
+		$result = preg_replace ( '~(?:^|\G)\h{2}~m',  "\t",     $result);
+
+		// open array
+		$result = str_replace  ( "array (\n",         "[\n",    $result);
+		// close array
+		$result = str_replace  ( "\t),\n",            "\t],\n", $result);
+		// close final array
+		$result = preg_replace ( "/\)$/",             "]",      $result);
+
+		// arrows without trailing spaces
+		$result = str_replace  ( "=> \n",             "=>\n",   $result);
+
+		if($return){
+			return $result;
+		}
+		echo $result;
+	}
 }

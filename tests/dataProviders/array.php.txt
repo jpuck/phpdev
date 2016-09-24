@@ -1,0 +1,18 @@
+[
+	'first' =>
+	[
+		'second' =>
+		[
+			'third' =>
+			[
+				'forth' =>
+				[
+					'fifth' => 5,
+				],
+			],
+		],
+	],
+	'closing parenthesis' => ')',
+	'6 spaces' => '      ',
+	'edge case' => 'array (',
+]

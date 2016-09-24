@@ -1,0 +1,7 @@
+[
+	0 =>
+	A::__set_state(array(
+		 'var1' => 5,
+		 'var2' => 'foo',
+	)),
+]
