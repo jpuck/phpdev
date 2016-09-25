@@ -9,14 +9,6 @@ class Functions {
 		}
 		echo $tabulated;
 	}
-	public static function print_r_tabs($array, Bool $return = false){
-		trigger_error(__METHOD__." is DEPRECATED: use print_rt instead.", E_USER_NOTICE);
-		$tabulated = str_replace('        ', '	', print_r($array, true));
-		if($return){
-			return $tabulated;
-		}
-		echo $tabulated;
-	}
 
 	public static function arr_export(Array $array, Bool $return = false){
 		$result = var_export($array, true);
