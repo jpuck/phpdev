@@ -1,6 +1,6 @@
 # PHP Developer Utilities
 
-A collection of classes useful for code under construction.
+A collection of PHP 7 classes useful for code under construction.
 
 ## Functions
 
