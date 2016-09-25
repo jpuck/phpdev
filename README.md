@@ -2,6 +2,11 @@
 
 A collection of PHP 7 classes useful for code under construction.
 
+Branch      | Status
+----------- | ------
+[master][5] | [![Build Status][8]][7]
+[dev][6]    | [![Build Status][9]][7]
+
 ## Getting Started
 
 This library is registered on [packagist][3], so you can easily include it in
@@ -210,3 +215,8 @@ class MyClass {
   [2]:http://php.net/manual/en/function.var-export.php
   [3]:https://packagist.org/packages/jpuck/phpdev
   [4]:https://getcomposer.org/
+  [5]:https://github.com/jpuck/phpdev/tree/master
+  [6]:https://github.com/jpuck/phpdev/tree/develop
+  [7]:https://travis-ci.org/jpuck/phpdev
+  [8]:https://travis-ci.org/jpuck/phpdev.svg?branch=master
+  [9]:https://travis-ci.org/jpuck/phpdev.svg?branch=dev
