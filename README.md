@@ -2,6 +2,20 @@
 
 A collection of PHP 7 classes useful for code under construction.
 
+## Getting Started
+
+This library is registered on [packagist][3], so you can easily include it in
+your project using [composer][4].
+
+    composer require jpuck/phpdev
+
+Don't forget to require the autoloader in your script.
+
+```php
+<?php
+require_once 'vendor/autoload.php';
+```
+
 ## Functions
 
 ### `mixed print_rt ( mixed $expression [, bool $return = false ] )`
@@ -194,3 +208,5 @@ class MyClass {
 
   [1]:http://php.net/manual/en/function.print-r.php
   [2]:http://php.net/manual/en/function.var-export.php
+  [3]:https://packagist.org/packages/jpuck/phpdev
+  [4]:https://getcomposer.org/
