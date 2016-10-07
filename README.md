@@ -185,6 +185,16 @@ Call to undefined method stdClass::__set_state()
 > PHP Fatal error:  Uncaught Error:
 Call to undefined method Closure::__set_state()
 
+### `null CleanMsSQLdb (PDO $pdo)`
+
+This is a [dangerously powerful script][10] for dropping everything from a
+Microsoft SQL Server database dbo schema.
+
+* non-system stored procs
+* views
+* functions
+* tables (regardless of Primary/Foreign Key constraints)
+
 ## Exceptions
 
 ### `Unimplemented` Method
@@ -220,3 +230,4 @@ class MyClass {
   [7]:https://travis-ci.org/jpuck/phpdev
   [8]:https://travis-ci.org/jpuck/phpdev.svg?branch=master
   [9]:https://travis-ci.org/jpuck/phpdev.svg?branch=dev
+  [10]:http://stackoverflow.com/a/1473313/4233593
