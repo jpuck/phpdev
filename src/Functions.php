@@ -47,7 +47,6 @@ class Functions {
 			BEGIN
 				SELECT @SQL = 'DROP PROCEDURE [dbo].[' + RTRIM(@name) +']'
 				EXEC (@SQL)
-				PRINT 'Dropped Procedure: ' + @name
 				SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] = 'P' AND category = 0 AND [name] > @name ORDER BY [name])
 			END
 		";
@@ -64,7 +63,6 @@ class Functions {
 			BEGIN
 				SELECT @SQL = 'DROP VIEW [dbo].[' + RTRIM(@name) +']'
 				EXEC (@SQL)
-				PRINT 'Dropped View: ' + @name
 				SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] = 'V' AND category = 0 AND [name] > @name ORDER BY [name])
 			END
 		";
@@ -81,7 +79,6 @@ class Functions {
 			BEGIN
 				SELECT @SQL = 'DROP FUNCTION [dbo].[' + RTRIM(@name) +']'
 				EXEC (@SQL)
-				PRINT 'Dropped Function: ' + @name
 				SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] IN (N'FN', N'IF', N'TF', N'FS', N'FT') AND category = 0 AND [name] > @name ORDER BY [name])
 			END
 		";
@@ -102,7 +99,6 @@ class Functions {
 				BEGIN
 					SELECT @SQL = 'ALTER TABLE [dbo].[' + RTRIM(@name) +'] DROP CONSTRAINT [' + RTRIM(@constraint) +']'
 					EXEC (@SQL)
-					PRINT 'Dropped FK Constraint: ' + @constraint + ' on ' + @name
 					SELECT @constraint = (SELECT TOP 1 CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE constraint_catalog=DB_NAME() AND CONSTRAINT_TYPE = 'FOREIGN KEY' AND CONSTRAINT_NAME <> @constraint AND TABLE_NAME = @name ORDER BY CONSTRAINT_NAME)
 				END
 			SELECT @name = (SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE constraint_catalog=DB_NAME() AND CONSTRAINT_TYPE = 'FOREIGN KEY' ORDER BY TABLE_NAME)
@@ -125,7 +121,6 @@ class Functions {
 				BEGIN
 					SELECT @SQL = 'ALTER TABLE [dbo].[' + RTRIM(@name) +'] DROP CONSTRAINT [' + RTRIM(@constraint)+']'
 					EXEC (@SQL)
-					PRINT 'Dropped PK Constraint: ' + @constraint + ' on ' + @name
 					SELECT @constraint = (SELECT TOP 1 CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE constraint_catalog=DB_NAME() AND CONSTRAINT_TYPE = 'PRIMARY KEY' AND CONSTRAINT_NAME <> @constraint AND TABLE_NAME = @name ORDER BY CONSTRAINT_NAME)
 				END
 			SELECT @name = (SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE constraint_catalog=DB_NAME() AND CONSTRAINT_TYPE = 'PRIMARY KEY' ORDER BY TABLE_NAME)
@@ -144,7 +139,6 @@ class Functions {
 			BEGIN
 				SELECT @SQL = 'DROP TABLE [dbo].[' + RTRIM(@name) +']'
 				EXEC (@SQL)
-				PRINT 'Dropped Table: ' + @name
 				SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] = 'U' AND category = 0 AND [name] > @name ORDER BY [name])
 			END
 		";
