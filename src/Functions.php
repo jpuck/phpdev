@@ -50,7 +50,7 @@ class Functions {
 				SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] = 'P' AND category = 0 AND [name] > @name ORDER BY [name])
 			END
 		";
-		$pdo->exec($sql);
+		$pdo->query($sql)->closeCursor();
 
 		$sql = "
 			/* Drop all views */
@@ -66,7 +66,7 @@ class Functions {
 				SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] = 'V' AND category = 0 AND [name] > @name ORDER BY [name])
 			END
 		";
-		$pdo->exec($sql);
+		$pdo->query($sql)->closeCursor();
 
 		$sql = "
 			/* Drop all functions */
@@ -82,7 +82,7 @@ class Functions {
 				SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] IN (N'FN', N'IF', N'TF', N'FS', N'FT') AND category = 0 AND [name] > @name ORDER BY [name])
 			END
 		";
-		$pdo->exec($sql);
+		$pdo->query($sql)->closeCursor();
 
 		$sql = "
 			/* Drop all Foreign Key constraints */
@@ -104,7 +104,7 @@ class Functions {
 			SELECT @name = (SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE constraint_catalog=DB_NAME() AND CONSTRAINT_TYPE = 'FOREIGN KEY' ORDER BY TABLE_NAME)
 			END
 		";
-		$pdo->exec($sql);
+		$pdo->query($sql)->closeCursor();
 
 		$sql = "
 			/* Drop all Primary Key constraints */
@@ -126,7 +126,7 @@ class Functions {
 			SELECT @name = (SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE constraint_catalog=DB_NAME() AND CONSTRAINT_TYPE = 'PRIMARY KEY' ORDER BY TABLE_NAME)
 			END
 		";
-		$pdo->exec($sql);
+		$pdo->query($sql)->closeCursor();
 
 		$sql = "
 			/* Drop all tables */
@@ -142,6 +142,6 @@ class Functions {
 				SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] = 'U' AND category = 0 AND [name] > @name ORDER BY [name])
 			END
 		";
-		$pdo->exec($sql);
+		$pdo->query($sql)->closeCursor();
 	}
 }
