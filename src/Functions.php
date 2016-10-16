@@ -2,6 +2,13 @@
 namespace jpuck\phpdev;
 
 class Functions {
+	public static function strbegins(String $haystack, String $needle) : Bool {
+		// http://stackoverflow.com/a/7168986/4233593
+		return $haystack[0] === $needle[0]
+			? strncmp($haystack, $needle, strlen($needle)) === 0
+			: false;
+	}
+
 	public static function print_rt($array, Bool $return = false){
 		$tabulated = str_replace('        ', '	', print_r($array, true));
 		if($return){

@@ -23,4 +23,23 @@ class FunctionsTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals($expectedArr, $actualArr);
 		$this->assertSame  ($expectedStr, $actualStr);
 	}
+
+	public function stringBeginsDataProvider(){
+		return [
+			['test','t',true],
+			['test','T',false],
+			['test','te',true],
+			['test','tes',true],
+			['test','test',true],
+			['test','testy',false],
+			['@special','@',true],
+		];
+	}
+
+	/**
+	 * @dataProvider stringBeginsDataProvider
+	 */
+	public function testCanCheckIfStringBeginsWithString(String $haystack, String $needle, Bool $begins){
+		$this->assertSame($begins, jp::strbegins($haystack, $needle));
+	}
 }
