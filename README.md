@@ -23,6 +23,18 @@ require_once 'vendor/autoload.php';
 
 ## Functions
 
+### `bool strbegins(String $haystack, String $needle)`
+
+Checks whether a [string begins with a string][11].
+
+```php
+$haystack = 'test';
+$needle   = 'te';
+if(Functions::strbegins($haystack, $needle)){
+	echo "$haystack begins with $needle";
+}
+```
+
 ### `mixed print_rt ( mixed $expression [, bool $return = false ] )`
 
 Tabulator wrapper for [`print_r`][1] replaces 8 spaces with a tab.
@@ -231,3 +243,4 @@ class MyClass {
   [8]:https://travis-ci.org/jpuck/phpdev.svg?branch=master
   [9]:https://travis-ci.org/jpuck/phpdev.svg?branch=dev
   [10]:http://stackoverflow.com/a/1473313/4233593
+  [11]:http://stackoverflow.com/a/7168986/4233593
