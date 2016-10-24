@@ -9,6 +9,31 @@ class Functions {
 			: false;
 	}
 
+	public static function array_diff_r(Array $arr1, Array $arr2) : Array {
+		// http://stackoverflow.com/a/29526501/4233593
+		$outputDiff = [];
+
+		foreach($arr1 as $key => $value){
+			if(array_key_exists($key, $arr2)){
+				if(is_array($value)){
+					$recursiveDiff = static::array_diff_r($value, $arr2[$key]);
+
+					if(count($recursiveDiff)){
+						$outputDiff[$key] = $recursiveDiff;
+					}
+				}
+				elseif(!in_array($value, $arr2)){
+					$outputDiff[$key] = $value;
+				}
+			}
+			elseif(!in_array($value, $arr2)){
+				$outputDiff[$key] = $value;
+			}
+		}
+
+		return $outputDiff;
+	}
+
 	public static function print_rt($array, Bool $return = false){
 		$tabulated = str_replace('        ', '	', print_r($array, true));
 		if($return){
