@@ -11,6 +11,16 @@ class Functions {
 			: false;
 	}
 
+	public static function anyset(...$vars) : Bool {
+		// http://stackoverflow.com/a/40496372/4233593
+		foreach($vars as $var){
+			if(isset($var)){
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public static function print_rt($array, Bool $return = false){
 		$tabulated = str_replace('        ', '	', print_r($array, true));
 		if($return){
