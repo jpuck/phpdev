@@ -1,6 +1,8 @@
 <?php
 namespace jpuck\phpdev;
 
+use Exception;
+
 class Functions {
 	public static function strbegins(String $haystack, String $needle) : Bool {
 		// http://stackoverflow.com/a/7168986/4233593
@@ -38,6 +40,25 @@ class Functions {
 			return $result;
 		}
 		echo $result;
+	}
+
+	// creates parent directories if they don't exist
+	public static function file_put_contents(string $filename, $data, int $flags = 0, $context = null){
+		$mkdirp = function(string $dir) use (&$mkdirp){
+			if(file_exists($dir)){
+				// make sure this file is a directory
+				if(!is_dir($dir)){
+					throw new Exception("$dir exists, but is not a directory.");
+				}
+			}elseif($mkdirp(dirname($dir))){
+				mkdir($dir);
+			}
+			return true;
+		};
+
+		$mkdirp(dirname($filename));
+
+		file_put_contents($filename, $data, $flags, $context);
 	}
 
 	// dangerously powerful
