@@ -36,4 +36,9 @@ class ConfigurationContainer {
 	static public function dump() : Array {
 		return static::$registry;
 	}
+
+	static public function closures(&$get, &$set = null){
+		$get = function($key){ return static::get($key); };
+		$set = function($key, $val){ return static::set($key, $val); };
+	}
 }
