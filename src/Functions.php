@@ -145,22 +145,6 @@ class Functions {
 		$pdo->query($sql)->closeCursor();
 
 		$sql = "
-			/* Drop all functions */
-			DECLARE @name VARCHAR(128)
-			DECLARE @SQL VARCHAR(254)
-
-			SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] IN (N'FN', N'IF', N'TF', N'FS', N'FT') AND category = 0 ORDER BY [name])
-
-			WHILE @name IS NOT NULL
-			BEGIN
-				SELECT @SQL = 'DROP FUNCTION [dbo].[' + RTRIM(@name) +']'
-				EXEC (@SQL)
-				SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] IN (N'FN', N'IF', N'TF', N'FS', N'FT') AND category = 0 AND [name] > @name ORDER BY [name])
-			END
-		";
-		$pdo->query($sql)->closeCursor();
-
-		$sql = "
 			/* Drop all Foreign Key constraints */
 			DECLARE @name VARCHAR(128)
 			DECLARE @constraint VARCHAR(254)
@@ -216,6 +200,22 @@ class Functions {
 				SELECT @SQL = 'DROP TABLE [dbo].[' + RTRIM(@name) +']'
 				EXEC (@SQL)
 				SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] = 'U' AND category = 0 AND [name] > @name ORDER BY [name])
+			END
+		";
+		$pdo->query($sql)->closeCursor();
+
+		$sql = "
+			/* Drop all functions */
+			DECLARE @name VARCHAR(128)
+			DECLARE @SQL VARCHAR(254)
+
+			SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] IN (N'FN', N'IF', N'TF', N'FS', N'FT') AND category = 0 ORDER BY [name])
+
+			WHILE @name IS NOT NULL
+			BEGIN
+				SELECT @SQL = 'DROP FUNCTION [dbo].[' + RTRIM(@name) +']'
+				EXEC (@SQL)
+				SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] IN (N'FN', N'IF', N'TF', N'FS', N'FT') AND category = 0 AND [name] > @name ORDER BY [name])
 			END
 		";
 		$pdo->query($sql)->closeCursor();
